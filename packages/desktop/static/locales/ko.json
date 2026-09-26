@@ -420,6 +420,7 @@
         "texMathDoubleBackslash": "Pandoc의 markdown 확장 tex_math_double_backslash 활성화",
         "isHtmlEnabled": "HTML 렌더링 활성화",
         "softNewlineAsSpace": "소프트 줄바꿈을 공백으로 처리",
+        "preserveEmptyLines": "문단 사이 빈 줄 유지",
         "sequenceTheme": "시퀀스 다이어그램 테마",
         "plantumlServer": "PlantUML 서버 URL",
         "theme": "MarkText에서 사용할 테마 선택",
@@ -674,6 +675,7 @@
       "compatibility": {
         "enableHtml": "HTML 지원 활성화",
         "softNewlineAsSpace": "소프트 줄바꿈을 공백으로 처리",
+        "preserveEmptyLines": "문단 사이 빈 줄 유지",
         "title": "호환성"
       },
       "lists": {

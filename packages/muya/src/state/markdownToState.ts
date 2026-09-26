@@ -24,6 +24,7 @@ interface IMarkdownToStateOptions {
     texMathDoubleBackslash: boolean;
     trimUnnecessaryCodeBlockEmptyLines: boolean;
     frontMatter: boolean;
+    preserveEmptyLines?: boolean;
 };
 
 const DEFAULT_OPTIONS = {
@@ -34,6 +35,7 @@ const DEFAULT_OPTIONS = {
     texMathDoubleBackslash: false,
     trimUnnecessaryCodeBlockEmptyLines: false,
     frontMatter: true,
+    preserveEmptyLines: false,
 };
 
 // Token types whose handler manipulates the `parentList` stack (push a
@@ -63,6 +65,7 @@ export class MarkdownToState {
             texMathDoubleBackslash = false,
             trimUnnecessaryCodeBlockEmptyLines = false,
             frontMatter = true,
+            preserveEmptyLines = false,
         } = this._options;
 
         // markdownToState injects synthetic `block-end` markers (see the
@@ -80,13 +83,33 @@ export class MarkdownToState {
         const states: TState[] = [];
         let token: TBlockToken | undefined;
         const parentList: TState[][] = [states];
+        // Whether the block before the one being handled already consumed its
+        // line terminator. marked leaves it off a paragraph's `raw` ("one") but
+        // keeps it on a container's (`- a\n- b\n`), so the same number of blank
+        // lines in the file reaches `space.raw` as a different number of
+        // newlines. `case 'space'` needs that to count blank lines correctly.
+        let prevEndsWithNewline = true;
 
         // eslint-disable-next-line no-cond-assign
         while ((token = tokens.shift())) {
-            if (CONTAINER_TOKEN_TYPES.has(token.type))
+            if (CONTAINER_TOKEN_TYPES.has(token.type)) {
                 this._handleContainerToken(token, parentList, tokens);
-            else
-                this._handleLeafToken(token, parentList, tokens, trimUnnecessaryCodeBlockEmptyLines);
+            }
+            else {
+                this._handleLeafToken(
+                    token,
+                    parentList,
+                    tokens,
+                    trimUnnecessaryCodeBlockEmptyLines,
+                    preserveEmptyLines,
+                    prevEndsWithNewline,
+                );
+            }
+
+            // The synthetic `block-end` marker injected while unwinding a
+            // container has no source text, so it leaves the flag untouched.
+            if ('raw' in token && typeof token.raw === 'string')
+                prevEndsWithNewline = token.raw.endsWith('\n');
         }
 
         return states.length ? states : [{ name: 'paragraph', text: '' }];
@@ -229,6 +252,8 @@ export class MarkdownToState {
         parentList: TState[][],
         tokens: TBlockToken[],
         trimUnnecessaryCodeBlockEmptyLines: boolean,
+        preserveEmptyLines: boolean,
+        prevEndsWithNewline: boolean,
     ) {
         let state: TState;
         let value: string;
@@ -394,6 +419,30 @@ export class MarkdownToState {
             }
 
             case 'space': {
+                // marked hands over the whole run of blank lines between two
+                // blocks as a single token, and CommonMark gives that run's
+                // length no meaning, so it is dropped by default. With
+                // `preserveEmptyLines` on, every blank line past the one that
+                // already ends the previous paragraph becomes an empty
+                // paragraph: the editor renders a paragraph as a line, so this
+                // is what makes "pressed Enter N times" still be N lines after
+                // the file is reopened.
+                //
+                // The writer matches it: an empty paragraph emits its own blank
+                // line but no separator, so N empty paragraphs serialize to
+                // N + 1 blank lines and read back as N.
+                //
+                // Top level only. Inside a list or a block-quote those same
+                // blank lines are what decides tight vs loose, so planting
+                // paragraphs there would change how the container parses.
+                if (!preserveEmptyLines || parentList.length !== 1)
+                    break;
+
+                const newlines = (token.raw.match(/\n/g) ?? []).length;
+                const blankLines = newlines - (prevEndsWithNewline ? 0 : 1);
+                const emptyParagraphs = Math.max(blankLines - 1, 0);
+                for (let i = 0; i < emptyParagraphs; i++)
+                    parentList[0].push({ name: 'paragraph', text: '' });
                 break;
             }
 

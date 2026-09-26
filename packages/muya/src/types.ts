@@ -36,6 +36,14 @@ export interface IMuyaOptions {
     texMathSingleBackslash: boolean;
     texMathDoubleBackslash: boolean;
     softNewlineAsSpace: boolean;
+    /**
+     * Keep runs of blank lines between top-level paragraphs as that many
+     * empty paragraph blocks. CommonMark gives a blank line exactly one
+     * meaning — it ends a paragraph — and discards how many there were, so
+     * without this a document that visually has three empty lines collapses
+     * to one on the next open. Off by default to stay spec-conformant.
+     */
+    preserveEmptyLines: boolean;
     autoMoveCheckedToEnd: boolean;
     disableHtml: boolean;
     locale: {

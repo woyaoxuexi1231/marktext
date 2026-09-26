@@ -84,6 +84,7 @@ export interface PreferencesState {
   texMathDoubleBackslash: boolean
   isHtmlEnabled: boolean
   softNewlineAsSpace: boolean
+  preserveEmptyLines: boolean
   sequenceTheme: SequenceTheme | string
   plantumlServer: string
 
@@ -205,6 +206,7 @@ export const usePreferencesStore = defineStore('preferences', {
     texMathDoubleBackslash: false,
     isHtmlEnabled: true,
     softNewlineAsSpace: false,
+    preserveEmptyLines: true,
     sequenceTheme: 'hand',
     plantumlServer: 'https://www.plantuml.com/plantuml',
 

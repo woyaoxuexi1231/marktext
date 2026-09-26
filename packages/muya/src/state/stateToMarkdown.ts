@@ -1,4 +1,3 @@
-/* eslint-disable no-fallthrough */
 import type {
     IAtxHeadingState,
     IBlockQuoteState,
@@ -151,6 +150,19 @@ export default class ExportMarkdown {
                 break;
 
             case 'paragraph':
+                // An empty paragraph's own line already is a blank line, so it
+                // supplies the separator the next block needs instead of also
+                // asking for one: a run of N empty paragraphs serializes to
+                // N+1 blank lines, which is what `markdownToState` reads back
+                // as N when `preserveEmptyLines` is on. Two non-empty
+                // paragraphs still get their separator, and with the option
+                // off a blank line carries no more meaning than it did before,
+                // so this only stops empty paragraphs from writing two blank
+                // lines each.
+                if (state.text !== '')
+                    this._insertLineBreak(result, indent);
+                result.push(this._serializeTextParagraph(state, indent));
+                break;
 
             case 'thematic-break':
                 this._insertLineBreak(result, indent);

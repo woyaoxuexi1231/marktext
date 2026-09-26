@@ -419,6 +419,7 @@
         "texMathDoubleBackslash": "Включить расширение markdown pandoc tex_math_double_backslash",
         "isHtmlEnabled": "Включить рендеринг HTML",
         "softNewlineAsSpace": "Считать мягкие переносы строк пробелами",
+        "preserveEmptyLines": "Сохранять пустые строки между абзацами",
         "sequenceTheme": "Тема диаграмм последовательностей",
         "plantumlServer": "URL сервера PlantUML",
         "theme": "Выберите тему, используемую в MarkText",
@@ -674,6 +675,7 @@
       "compatibility": {
         "enableHtml": "Включить поддержку HTML",
         "softNewlineAsSpace": "Считать мягкие переносы строк пробелами",
+        "preserveEmptyLines": "Сохранять пустые строки между абзацами",
         "title": "Совместимость"
       },
       "lists": {

@@ -420,6 +420,7 @@
         "texMathDoubleBackslash": "Pandoc の markdown 拡張 tex_math_double_backslash を有効にする",
         "isHtmlEnabled": "HTML レンダリングを有効にする",
         "softNewlineAsSpace": "ソフト改行をスペースとして扱う",
+        "preserveEmptyLines": "段落間の空行を保持",
         "sequenceTheme": "シーケンス図のテーマ",
         "plantumlServer": "PlantUML サーバーの URL",
         "theme": "MarkText で使用するテーマの選択",
@@ -674,6 +675,7 @@
       "compatibility": {
         "enableHtml": "HTMLサポートを有効",
         "softNewlineAsSpace": "ソフト改行をスペースとして扱う",
+        "preserveEmptyLines": "段落間の空行を保持",
         "title": "互換性"
       },
       "lists": {

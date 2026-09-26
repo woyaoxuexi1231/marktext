@@ -419,6 +419,7 @@
         "texMathDoubleBackslash": "Pandocs markdown-extensie tex_math_double_backslash inschakelen",
         "isHtmlEnabled": "HTML-weergave inschakelen",
         "softNewlineAsSpace": "Zachte regeleinden als spaties behandelen",
+        "preserveEmptyLines": "Legge regels tussen alinea's behouden",
         "sequenceTheme": "Sequentiediagram thema",
         "plantumlServer": "PlantUML server-URL",
         "theme": "Selecteer het thema voor MarkText",
@@ -674,6 +675,7 @@
       "compatibility": {
         "enableHtml": "HTML-ondersteuning inschakelen",
         "softNewlineAsSpace": "Zachte regeleinden als spaties behandelen",
+        "preserveEmptyLines": "Legge regels tussen alinea's behouden",
         "title": "Compatibiliteit"
       },
       "lists": {

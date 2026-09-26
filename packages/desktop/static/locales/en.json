@@ -419,6 +419,7 @@
         "texMathDoubleBackslash": "Enable pandoc's markdown extension tex_math_double_backslash",
         "isHtmlEnabled": "Enable HTML rendering",
         "softNewlineAsSpace": "Treat soft newlines as spaces",
+        "preserveEmptyLines": "Keep blank lines between paragraphs",
         "sequenceTheme": "Sequence diagram theme",
         "plantumlServer": "PlantUML server URL",
         "theme": "Select the theme used in MarkText",
@@ -674,6 +675,7 @@
       "compatibility": {
         "enableHtml": "Enable HTML support",
         "softNewlineAsSpace": "Treat soft newlines as spaces",
+        "preserveEmptyLines": "Keep blank lines between paragraphs",
         "title": "Compatibility"
       },
       "lists": {

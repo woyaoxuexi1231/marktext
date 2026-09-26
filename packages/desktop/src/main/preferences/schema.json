@@ -301,6 +301,11 @@
     "type": "boolean",
     "default": false
   },
+  "preserveEmptyLines": {
+    "description": "Markdown--Restore each blank line between paragraphs as an empty line, so several presses of Enter survive reopening the file.",
+    "type": "boolean",
+    "default": true
+  },
   "sequenceTheme": {
     "description": "Markdown--Sequence diagram theme",
     "enum": ["hand", "simple"],

@@ -59,6 +59,7 @@
   "texMathDoubleBackslash": false,
   "isHtmlEnabled": true,
   "softNewlineAsSpace": false,
+  "preserveEmptyLines": true,
   "sequenceTheme": "hand",
   "plantumlServer": "https://www.plantuml.com/plantuml",
 

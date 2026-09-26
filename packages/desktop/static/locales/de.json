@@ -420,6 +420,7 @@
         "texMathDoubleBackslash": "Pandocs Markdown-Erweiterung tex_math_double_backslash aktivieren",
         "isHtmlEnabled": "HTML-Rendering aktivieren",
         "softNewlineAsSpace": "Weiche Zeilenumbrüche als Leerzeichen behandeln",
+        "preserveEmptyLines": "Leerzeilen zwischen Absätzen beibehalten",
         "sequenceTheme": "Sequenzdiagramm-Theme",
         "plantumlServer": "PlantUML-Server-URL",
         "theme": "Das in MarkText verwendete Theme auswählen",
@@ -674,6 +675,7 @@
       "compatibility": {
         "enableHtml": "HTML-Unterstützung aktivieren",
         "softNewlineAsSpace": "Weiche Zeilenumbrüche als Leerzeichen behandeln",
+        "preserveEmptyLines": "Leerzeilen zwischen Absätzen beibehalten",
         "title": "Kompatibilität"
       },
       "lists": {

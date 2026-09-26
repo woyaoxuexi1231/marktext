@@ -363,6 +363,9 @@ export const MUYA_DEFAULT_OPTIONS = {
     texMathDoubleBackslash: false,
     // Render soft line breaks as spaces instead of visual newlines.
     softNewlineAsSpace: false,
+    // Restore each blank line between top-level paragraphs as an empty
+    // paragraph. See `IMuyajsOptions.preserveEmptyLines` for the trade-off.
+    preserveEmptyLines: false,
     // Move checked task list item to the end of task list.
     autoMoveCheckedToEnd: false,
     // Whether HTML rendering is disabled or not.

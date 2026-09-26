@@ -420,6 +420,7 @@
         "texMathDoubleBackslash": "启用 Pandoc 的 Markdown 扩展 tex_math_double_backslash",
         "isHtmlEnabled": "启用 HTML 渲染",
         "softNewlineAsSpace": "将软换行符视为空格",
+        "preserveEmptyLines": "保留段落之间的空行",
         "sequenceTheme": "序列图主题",
         "plantumlServer": "PlantUML 服务器 URL",
         "theme": "选择 MarkText 中使用的主题",
@@ -674,6 +675,7 @@
       "compatibility": {
         "enableHtml": "启用 HTML 支持",
         "softNewlineAsSpace": "将软换行符视为空格",
+        "preserveEmptyLines": "保留段落之间的空行",
         "title": "兼容性"
       },
       "lists": {

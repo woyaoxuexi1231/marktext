@@ -419,6 +419,7 @@
         "texMathDoubleBackslash": "Pandoc'un markdown uzantısı tex_math_double_backslash'i etkinleştir",
         "isHtmlEnabled": "HTML işlemeyi etkinleştir",
         "softNewlineAsSpace": "Yumuşak satır sonlarını boşluk olarak değerlendir",
+        "preserveEmptyLines": "Paragraflar arasındaki boş satırları koru",
         "sequenceTheme": "Dizi diyagramı teması",
         "theme": "MarkText'te kullanılan temayı seçin",
         "followSystemTheme": "Sistem Temasını Takip Et",
@@ -674,6 +675,7 @@
       "compatibility": {
         "enableHtml": "HTML desteğini etkinleştir",
         "softNewlineAsSpace": "Yumuşak satır sonlarını boşluk olarak değerlendir",
+        "preserveEmptyLines": "Paragraflar arasındaki boş satırları koru",
         "title": "Uyumluluk"
       },
       "lists": {

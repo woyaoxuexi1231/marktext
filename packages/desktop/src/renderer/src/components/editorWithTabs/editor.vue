@@ -205,6 +205,7 @@ const {
   texMathDoubleBackslash,
   isHtmlEnabled,
   softNewlineAsSpace,
+  preserveEmptyLines,
   lineHeight,
   fontSize,
   codeFontSize,
@@ -697,6 +698,14 @@ watch(texMathDoubleBackslash, (value, oldValue) => {
 watch(softNewlineAsSpace, (value, oldValue) => {
   if (value !== oldValue && editor.value) {
     editor.value.setOptions({ softNewlineAsSpace: value }, true)
+  }
+})
+
+watch(preserveEmptyLines, (value, oldValue) => {
+  if (value !== oldValue && editor.value) {
+    // Re-parses the open document: the option decides how many blank lines
+    // become empty paragraphs.
+    editor.value.setOptions({ preserveEmptyLines: value }, true)
   }
 })
 
@@ -1865,6 +1874,7 @@ onMounted(() => {
     texMathDoubleBackslash: texMathDoubleBackslash.value,
     disableHtml: !isHtmlEnabled.value,
     softNewlineAsSpace: softNewlineAsSpace.value,
+    preserveEmptyLines: preserveEmptyLines.value,
     hideQuickInsertHint: hideQuickInsertHint.value,
     hideLinkPopup: hideLinkPopup.value,
     autoCheck: autoCheck.value,

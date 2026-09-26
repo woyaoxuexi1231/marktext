@@ -107,6 +107,11 @@
           :bool="softNewlineAsSpace"
           :on-change="(value) => onSelectChange('softNewlineAsSpace', value)"
         />
+        <bool
+          :description="t('preferences.markdown.compatibility.preserveEmptyLines')"
+          :bool="preserveEmptyLines"
+          :on-change="(value) => onSelectChange('preserveEmptyLines', value)"
+        />
       </template>
     </compound>
 
@@ -189,6 +194,7 @@ const {
   texMathDoubleBackslash,
   isHtmlEnabled,
   softNewlineAsSpace,
+  preserveEmptyLines,
   sequenceTheme,
   plantumlServer
 } = storeToRefs(preferenceStore)
