@@ -74,6 +74,11 @@ electronLanguages: # Keep Chromium/AppKit locales for the UI languages MarkText 
 
 asarUnpack:
   - resources/**
+  # marktext rewrites `app.asar` to `app.asar.unpacked` on the ripgrep binary
+  # path (main/ipc/ripgrep.ts), and a .exe cannot be spawned from inside an asar
+  # anyway. The platform package is only reachable by the packager once it is a
+  # direct optionalDependency, because pnpm hoists it out of this package.
+  - node_modules/@vscode/ripgrep-win32-x64/**
 fileAssociations:
   - ext: md
     name: Markdown
